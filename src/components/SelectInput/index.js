@@ -11,6 +11,7 @@ export default class SelectInput extends React.Component {
       <div>
         <FormControl>
           <Select
+            value={0}
             inputProps={{
               name: 'children',
               id: 'children-simple'

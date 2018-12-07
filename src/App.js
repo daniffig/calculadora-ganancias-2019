@@ -4,7 +4,6 @@ import './App.css';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
 
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -16,10 +15,24 @@ import SelectInput from './components/SelectInput';
 import SwitchInput from './components/SwitchInput';
 import { CardActions } from '@material-ui/core';
 
-
-
 class App extends Component {
+
+  constructor () {
+    super();
+
+    this.state = {
+      grossSalary: 0
+
+    }
+  }
+
+  handleCalculate = () => {
+    console.log('fede');
+  }
+
   render() {
+    const state = this.state;
+
     return (
       <div className="App">
         {/* <AppBar position="static" color="default">
@@ -35,7 +48,7 @@ class App extends Component {
           />
           <CardContent>
             <form>
-              <MoneyInput label="Salario bruto" />
+              <MoneyInput label="Salario bruto" value={state.grossSalary} />
               <SwitchInput label="¿Jubilado?" />
               <SwitchInput label="¿Cónyugue a cargo?" />
               <SwitchInput label="¿Vivís en la Patagonia?" />
@@ -45,7 +58,10 @@ class App extends Component {
             </form>            
           </CardContent>  
           <CardActions>
-            <Button variant="contained">
+            <Button
+              variant="contained"
+              onClick={this.handleCalculate}
+            >
               Calcular
             </Button>            
           </CardActions>
