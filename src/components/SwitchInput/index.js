@@ -6,6 +6,13 @@ import Switch from '@material-ui/core/Switch';
 
 export default class SwitchInput extends React.Component {
 
+  handleChange(e) {
+    const value = e.target.value;
+    const valueName = this.props.valueName;
+
+    this.props.changeValue(valueName, value);
+  }
+
   render () {
     return (
       <div>
@@ -13,8 +20,8 @@ export default class SwitchInput extends React.Component {
           <FormControlLabel
             control={
               <Switch
-                value="Fede14"
                 color="primary"
+                onChange={this.handleChange.bind(this)}
               />                
             }
             label={this.props.label}        

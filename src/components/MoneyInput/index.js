@@ -6,21 +6,16 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
 
 export default class MoneyInput extends React.Component {
-  constructor () {
-    super();
 
-    this.state = {
-      value: null
-    }
-  }
+  handleChange(e) {
+    const value = e.target.value;
+    const valueName = this.props.valueName;
 
-  componentDidMount() {
-    this.setState({value: this.props.value})
+    this.props.changeValue(valueName, value);
   }
  
   render () {
-    const props = this.props
-    const state = this.state;
+    const props = this.props;
 
     return (
       <div>
@@ -29,8 +24,7 @@ export default class MoneyInput extends React.Component {
           <Input
             id="adornment-gross-salary"
             type="number"
-            value={state.value}
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
         </FormControl>
